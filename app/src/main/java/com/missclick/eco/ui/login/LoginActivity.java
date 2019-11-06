@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
+        final Button signupButton = findViewById(R.id.signup);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
         final Intent intent = new Intent(this, MainActivity.class);
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -114,6 +115,13 @@ public class LoginActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+
+            }
+        });
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
 
             }
         });
